@@ -1,0 +1,51 @@
+<div ng-app="app">
+  <div ng-controller="workoutCtrl" ng-init="setup()">
+  <ul>
+  <li ng-repeat="error in errors">{{ error }}</li>
+  </ul>
+    <p>
+    Exersise: <input ng-model="newWorkOutExersise">
+    Time: <input ng-model="newWorkOutTime">
+    Calories Burned: <input ng-model="newWorkOutCaloriesBurned">
+    <button ng-click="addWorkout(newWorkOutExersise, newWorkOutTime, newWorkOutCaloriesBurned)"> add exersise</button>
+    </p>
+    <p>
+    Exercise: <input ng-model="exerciseFilter" list="exercises">
+    <label> Filter by Exercise </label>
+    <datalist id="exercises">
+    <option ng-repeat="workout in workouts">{{workout.exercise}}</option>
+    </datalist>
+
+    calorie <input ng-model="calorieFilter">
+    </p>
+    <div>
+    <button ng-click="toggleOrder('exercise')">order by exercise</button>
+    <button ng-click="toggleOrder('calories_burned')"> order by calories burned</button>
+    </div>
+    <workout></workout>
+        <table>
+        <tr>
+        <th> exercise </th>
+        <th> time </th>
+        <th> calories burned</th>
+        <th> delete this workout </th>
+        </tr>
+        </table>
+   
+    <div ng-repeat= "workout in workouts |filter:{exercise: exerciseFilter} |orderBy:orderAttribute:false">
+    
+    <table>
+    <tr ng-repeat="workout in workouts | filter: {exercise: exerciseFilter, calorie: calorieFilter}">
+        <td> {{ workout.exercise}} </td>
+        <td> {{ workout.time }} </td>
+        <td> {{ workout.calories_burned }} </td>
+        <td> <button ng-click="deleteWorkout(workout)" delete </button></td>
+    </tr>
+    </table>
+    
+  </div>
+
+</div>
+
+
+
