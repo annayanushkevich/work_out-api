@@ -1,0 +1,18 @@
+<table>
+        <tr>
+        <th> exercise </th>
+        <th> time </th>
+        <th> calories burned</th>
+        <th> delete this workout </th>
+        </tr>
+        </table>
+    
+    <table>
+    <tr ng-repeat="workout in workouts | filter: {exercise: exerciseFilter, calorie: calorieFilter}">
+        <td> {{ workout.exercise}} </td>
+        <td> {{ workout.time }} </td>
+        <td> {{ workout.calories_burned }} </td>
+        <td><button ng-click="deleteWorkout(workout)"> delete </button></td>
+    </tr>
+</table>
+    

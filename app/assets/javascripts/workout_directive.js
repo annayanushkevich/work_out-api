@@ -1,6 +1,6 @@
-angular.module("app").directive('workout',function(){
+angular.module("app").directive('workout', function(){
   return{
-    restrict: 'E'
-    template: '<h1> hiiii kylieeeeeeee! </h1>'
+    restrict: 'E',
+    templateUrl: 'exercise-table.html'
   }
 });
